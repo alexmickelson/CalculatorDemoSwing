@@ -3,6 +3,11 @@ SwingDemo layout
 Demo will use decorator to have Suplimented JPanel views and a Jframe Controller
 
 JFrames, JPanels, JTextArea
+  https://docs.oracle.com/javase/tutorial/uiswing/components/text.html
 flowlayout, gridBagLayout
-JButton ActionListener
-Inject an Actionlistener
+  https://docs.oracle.com/javase/tutorial/uiswing/layout/visual.html
+JButton 
+  ActionListener
+    ActionListener interface
+      actionPerformed function
+  Inject an Actionlistener
