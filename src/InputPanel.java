@@ -7,17 +7,24 @@ public class InputPanel extends JPanel implements ActionListener {
     private JTextArea input1;
     private JTextArea input2;
 
+    private ICalculate addCalc;
+    private ICalculate subCalc;
+
     private JButton add;
     private JButton sub;
     private JButton both;
 
     public InputPanel(){
-        input1 = new JTextArea("first");
-        input2 = new JTextArea("second");
+        input1 = new JTextArea("100");
+        input2 = new JTextArea("50");
 
         add = new JButton("+");
         sub = new JButton("-");
         both = new JButton("Both");
+
+        add.addActionListener(this);
+        sub.addActionListener(this);
+        both.addActionListener(this);
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -57,16 +64,32 @@ public class InputPanel extends JPanel implements ActionListener {
 
     }
 
+    public int getInput1(){
+        return Integer.parseInt(input1.getText());
+    }
+
+    public int getInput2(){
+        return Integer.parseInt(input2.getText());
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton clicked = (JButton)e.getSource();
-
-        if (clicked == add) {
-            //add stuff
-        } else if (clicked == sub){
-            //sub stuff
-        } else if (clicked == both){
-            //both stuff
+        if (addCalc != null && subCalc != null){
+            if (clicked == add) {
+                addCalc.calc();
+            } else if (clicked == sub){
+                subCalc.calc();
+            } else if (clicked == both){
+                addCalc.calc();
+                subCalc.calc();
+            }
         }
+
+    }
+
+    public void setAddSub(ICalculate add, ICalculate sub) {
+
+        this.addCalc = add;
+        this.subCalc = sub;
     }
 }

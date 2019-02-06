@@ -31,4 +31,11 @@ public class OutputPanel extends JPanel {
         add(res2, c);
 
     }
+
+    public void setRes1(String string){
+        res1.setText(string);
+    }
+    public void setRes2(String string){
+        res2.setText(string);
+    }
 }

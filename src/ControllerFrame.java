@@ -5,12 +5,27 @@ public class ControllerFrame extends JFrame {
     private InputPanel inputPanel;
     private OutputPanel outputPanel;
 
+    private ICalculate add;
+    private ICalculate sub;
+
     public ControllerFrame(){
         //initialize
         super("CALCULATOR DEMO");
         setLayout(new FlowLayout(FlowLayout.CENTER));
+
         outputPanel = new OutputPanel();
         inputPanel = new InputPanel();
+
+        add = new ICalculate() {
+            @Override
+            public void calc() {
+                outputPanel.setRes1(String.valueOf(inputPanel.getInput1() + inputPanel.getInput2()));
+            }
+        };
+        sub = () -> outputPanel.setRes2(String.valueOf(inputPanel.getInput1() - inputPanel.getInput2()));
+
+        inputPanel.setAddSub(add, sub);
+
 
         //put frame together
         add(inputPanel);
